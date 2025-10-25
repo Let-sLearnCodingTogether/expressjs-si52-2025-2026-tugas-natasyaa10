@@ -1,8 +1,9 @@
+import bukuModel from "../model/bukuModel.js"
 import Buku from "../model/bukuModel.js"
 
 export const listBuku = async (req, res) => {
     try {
-        const data = await Buku.find({})
+        const data = await bukuModel.find({})
         res.status(200).json({ 
             message: "List buku", 
             data 
@@ -18,7 +19,7 @@ export const listBuku = async (req, res) => {
 export const createBuku = async (req,res)=>{
     try{const request = req.body
         console.log(request)
-        const response = await BukuModel.create({
+        const response = await bukuModel.create({
             bookTitle : request.bookTitle,
             author : request.author,
             status : request.status,
@@ -47,7 +48,7 @@ export const updateBuku = async (req,res) => {
             })
         }
         console.log(request)
-        const response = await BukuModel.findByIdAndUpdate(id, {
+        const response = await bukuModel.findByIdAndUpdate(id, {
             bookTitle : request.bookTitle,
             author : request.author,
             status : request.status,
@@ -82,7 +83,7 @@ export const deleteBuku = async (req,res)=>{
                 data: response
             })
         }
-        const response = await BukuModel.findByIdAndDelete(id)
+        const response = await bukuModel.findByIdAndDelete(id)
         if(response) {
             res.status(500).json({
                 message : "Buku Berhasil Dihapus",
