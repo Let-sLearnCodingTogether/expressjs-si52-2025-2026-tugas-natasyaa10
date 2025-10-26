@@ -85,7 +85,7 @@ export const deleteBuku = async (req,res)=>{
         }
         const response = await bukuModel.findByIdAndDelete(id)
         if(response) {
-            res.status(500).json({
+            res.status(200).json({
                 message : "Buku Berhasil Dihapus",
                 data: null
             })
